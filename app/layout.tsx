@@ -26,9 +26,9 @@ export default function RootLayout({
   return (
     <html lang="en" className="scroll-smooth">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased min-h-screen bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 text-slate-100`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased min-h-screen bg-[#f6f4f0] text-slate-800`}
       >
-        <nav className="fixed top-0 left-0 right-0 z-50 backdrop-blur-xl bg-slate-950/70 border-b border-white/10">
+        <nav className="fixed top-0 left-0 right-0 z-50 backdrop-blur-xl bg-[#f6f4f0]/90 border-b border-slate-200">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="flex justify-between h-20 items-center">
               <Link href="/" className="flex items-center gap-3 group">
@@ -40,14 +40,14 @@ export default function RootLayout({
                   </div>
                 </div>
                 <div className="flex flex-col">
-                  <span className="font-bold text-xl tracking-tight text-white">One Hub</span>
-                  <span className="text-xs text-cyan-400 font-medium -mt-0.5">Ottawa</span>
+                  <span className="font-bold text-xl tracking-tight text-slate-900">One Hub</span>
+                  <span className="text-xs text-cyan-600 font-medium -mt-0.5">Ottawa</span>
                 </div>
               </Link>
               <div className="flex items-center gap-6">
                 <Link
                   href="/"
-                  className="text-slate-300 hover:text-white px-3 py-2 text-sm font-medium transition-all duration-200 hover:scale-105"
+                  className="text-slate-600 hover:text-slate-900 px-3 py-2 text-sm font-medium transition-all duration-200 hover:scale-105"
                 >
                   Discover
                 </Link>

@@ -65,8 +65,8 @@ export default function AddBusinessPage() {
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
             </svg>
           </div>
-          <h2 className="text-3xl font-bold text-white mb-3">Welcome to One Hub!</h2>
-          <p className="text-slate-400 mb-2">Your business has been successfully added to the Ottawa directory.</p>
+          <h2 className="text-3xl font-bold text-slate-900 mb-3">Welcome to One Hub!</h2>
+          <p className="text-slate-600 mb-2">Your business has been successfully added to the Ottawa directory.</p>
           <p className="text-slate-500 text-sm">Redirecting to home...</p>
         </div>
       </div>
@@ -77,10 +77,10 @@ export default function AddBusinessPage() {
     <div className="min-h-screen py-12 px-4 sm:px-6 lg:px-8">
       <div className="max-w-3xl mx-auto">
         <div className="text-center mb-12">
-          <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">
+          <h1 className="text-4xl md:text-5xl font-bold text-slate-900 mb-4">
             Join <span className="text-gradient">One Hub</span>
           </h1>
-          <p className="text-lg text-slate-400 max-w-xl mx-auto">
+          <p className="text-lg text-slate-600 max-w-xl mx-auto">
             Connect with Ottawa&apos;s thriving business community. Get discovered by thousands of local customers.
           </p>
         </div>
@@ -91,7 +91,7 @@ export default function AddBusinessPage() {
               <svg className="w-5 h-5 text-red-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
               </svg>
-              <p className="text-red-300 text-sm">{error}</p>
+              <p className="text-red-600 text-sm">{error}</p>
             </div>
           </div>
         )}
@@ -99,8 +99,8 @@ export default function AddBusinessPage() {
         <form onSubmit={handleSubmit} className="glass rounded-3xl p-8 md:p-10 space-y-6">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div className="md:col-span-2">
-              <label htmlFor="name" className="block text-sm font-medium text-slate-300 mb-2">
-                Business Name <span className="text-cyan-400">*</span>
+              <label htmlFor="name" className="block text-sm font-medium text-slate-600 mb-2">
+                Business Name <span className="text-cyan-600">*</span>
               </label>
               <input
                 type="text"
@@ -110,14 +110,14 @@ export default function AddBusinessPage() {
                 minLength={2}
                 value={formData.name}
                 onChange={handleChange}
-                className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-cyan-500/50 transition-all"
+                className="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-cyan-500/50 transition-all"
                 placeholder="e.g., Smith's Coffee Shop"
               />
             </div>
 
             <div>
-              <label htmlFor="category" className="block text-sm font-medium text-slate-300 mb-2">
-                Category <span className="text-cyan-400">*</span>
+              <label htmlFor="category" className="block text-sm font-medium text-slate-600 mb-2">
+                Category <span className="text-cyan-600">*</span>
               </label>
               <select
                 id="category"
@@ -125,17 +125,17 @@ export default function AddBusinessPage() {
                 required
                 value={formData.category}
                 onChange={handleChange}
-                className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white focus:outline-none focus:ring-2 focus:ring-cyan-500/50 transition-all appearance-none cursor-pointer"
+                className="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl text-slate-900 focus:outline-none focus:ring-2 focus:ring-cyan-500/50 transition-all appearance-none cursor-pointer"
               >
                 {BUSINESS_CATEGORIES.map((category) => (
-                  <option key={category} value={category} className="bg-slate-900">{category}</option>
+                  <option key={category} value={category} className="bg-white text-slate-900">{category}</option>
                 ))}
               </select>
             </div>
 
             <div>
-              <label htmlFor="phone" className="block text-sm font-medium text-slate-300 mb-2">
-                Phone Number <span className="text-cyan-400">*</span>
+              <label htmlFor="phone" className="block text-sm font-medium text-slate-600 mb-2">
+                Phone Number <span className="text-cyan-600">*</span>
               </label>
               <input
                 type="tel"
@@ -144,14 +144,14 @@ export default function AddBusinessPage() {
                 required
                 value={formData.phone}
                 onChange={handleChange}
-                className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-cyan-500/50 transition-all"
+                className="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-cyan-500/50 transition-all"
                 placeholder="(613) 555-0123"
               />
             </div>
 
             <div className="md:col-span-2">
-              <label htmlFor="description" className="block text-sm font-medium text-slate-300 mb-2">
-                Description <span className="text-cyan-400">*</span>
+              <label htmlFor="description" className="block text-sm font-medium text-slate-600 mb-2">
+                Description <span className="text-cyan-600">*</span>
               </label>
               <textarea
                 id="description"
@@ -161,15 +161,15 @@ export default function AddBusinessPage() {
                 rows={4}
                 value={formData.description}
                 onChange={handleChange}
-                className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-cyan-500/50 transition-all resize-none"
+                className="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-cyan-500/50 transition-all resize-none"
                 placeholder="Tell us what makes your business special..."
               />
               <p className="text-xs text-slate-500 mt-1">Minimum 10 characters required</p>
             </div>
 
             <div className="md:col-span-2">
-              <label htmlFor="address" className="block text-sm font-medium text-slate-300 mb-2">
-                Address <span className="text-cyan-400">*</span>
+              <label htmlFor="address" className="block text-sm font-medium text-slate-600 mb-2">
+                Address <span className="text-cyan-600">*</span>
               </label>
               <input
                 type="text"
@@ -179,14 +179,14 @@ export default function AddBusinessPage() {
                 minLength={5}
                 value={formData.address}
                 onChange={handleChange}
-                className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-cyan-500/50 transition-all"
+                className="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-cyan-500/50 transition-all"
                 placeholder="123 Bank Street, Ottawa, ON"
               />
             </div>
 
             <div>
-              <label htmlFor="email" className="block text-sm font-medium text-slate-300 mb-2">
-                Email Address <span className="text-cyan-400">*</span>
+              <label htmlFor="email" className="block text-sm font-medium text-slate-600 mb-2">
+                Email Address <span className="text-cyan-600">*</span>
               </label>
               <input
                 type="email"
@@ -195,13 +195,13 @@ export default function AddBusinessPage() {
                 required
                 value={formData.email}
                 onChange={handleChange}
-                className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-cyan-500/50 transition-all"
+                className="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-cyan-500/50 transition-all"
                 placeholder="contact@yourbusiness.com"
               />
             </div>
 
             <div>
-              <label htmlFor="website" className="block text-sm font-medium text-slate-300 mb-2">
+              <label htmlFor="website" className="block text-sm font-medium text-slate-600 mb-2">
                 Website <span className="text-slate-500">(Optional)</span>
               </label>
               <input
@@ -210,7 +210,7 @@ export default function AddBusinessPage() {
                 name="website"
                 value={formData.website}
                 onChange={handleChange}
-                className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-cyan-500/50 transition-all"
+                className="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-cyan-500/50 transition-all"
                 placeholder="https://www.yourbusiness.com"
               />
             </div>

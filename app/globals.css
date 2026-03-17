@@ -1,8 +1,8 @@
 @import "tailwindcss";
 
 :root {
-  --background: #020617;
-  --foreground: #f8fafc;
+  --background: #f6f4f0;
+  --foreground: #1e293b;
 }
 
 @theme inline {
@@ -17,7 +17,7 @@ html {
 }
 
 body {
-  background: linear-gradient(135deg, #020617 0%, #0f172a 50%, #1e293b 100%);
+  background: #f6f4f0;
   background-attachment: fixed;
   color: var(--foreground);
   font-family: var(--font-geist-sans), system-ui, sans-serif;
@@ -29,7 +29,7 @@ body {
 }
 
 ::-webkit-scrollbar-track {
-  background: rgba(255, 255, 255, 0.05);
+  background: rgba(0, 0, 0, 0.05);
 }
 
 ::-webkit-scrollbar-thumb {
@@ -43,9 +43,9 @@ body {
 
 /* Glass morphism utility */
 .glass {
-  background: rgba(255, 255, 255, 0.05);
+  background: rgba(255, 255, 255, 0.7);
   backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(0, 0, 0, 0.08);
 }
 
 /* Glow effects */

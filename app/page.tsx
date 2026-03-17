@@ -18,27 +18,27 @@ export default async function HomePage() {
       <section className="relative overflow-hidden">
         {/* Background decoration - smaller, darker circles */}
         <div className="absolute inset-0">
-          <div className="absolute top-20 left-10 w-48 h-48 bg-slate-600/10 rounded-full blur-3xl" />
-          <div className="absolute top-40 right-10 w-64 h-64 bg-slate-700/10 rounded-full blur-3xl" />
-          <div className="absolute bottom-20 left-1/3 w-56 h-56 bg-slate-600/10 rounded-full blur-3xl" />
+          <div className="absolute top-20 left-10 w-48 h-48 bg-slate-400/20 rounded-full blur-3xl" />
+          <div className="absolute top-40 right-10 w-64 h-64 bg-slate-400/15 rounded-full blur-3xl" />
+          <div className="absolute bottom-20 left-1/3 w-56 h-56 bg-slate-400/20 rounded-full blur-3xl" />
         </div>
 
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-20 pb-16">
           <div className="text-center">
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 mb-8">
-              <span className="w-2 h-2 bg-emerald-400 rounded-full animate-pulse" />
-              <span className="text-sm text-slate-300">
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/80 border border-slate-200 mb-8">
+              <span className="w-2 h-2 bg-emerald-500 rounded-full animate-pulse" />
+              <span className="text-sm text-slate-600">
                 {response.data.length}+ Ottawa businesses connected
               </span>
             </div>
 
             <h1 className="text-5xl md:text-7xl font-bold mb-6 tracking-tight">
-              <span className="text-white">Connect.</span>{' '}
+              <span className="text-slate-900">Connect.</span>{' '}
               <span className="text-gradient">Discover.</span>{' '}
-              <span className="text-white">Grow.</span>
+              <span className="text-slate-900">Grow.</span>
             </h1>
 
-            <p className="text-xl text-slate-400 max-w-2xl mx-auto mb-10 leading-relaxed">
+            <p className="text-xl text-slate-600 max-w-2xl mx-auto mb-10 leading-relaxed">
               The premier destination for Ottawa&apos;s business community.
               Find local services, connect with entrepreneurs, and grow your network.
             </p>
@@ -65,7 +65,7 @@ export default async function HomePage() {
               </a>
               <a
                 href="/add"
-                className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full font-semibold border border-white/20 text-white transition-all duration-300 hover:bg-white/10 hover:scale-105"
+                className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full font-semibold border border-slate-300 text-slate-700 transition-all duration-300 hover:bg-slate-100 hover:scale-105"
               >
                 Add Your Business
               </a>
@@ -75,28 +75,28 @@ export default async function HomePage() {
       </section>
 
       {/* Stats Section */}
-      <section className="relative py-12 border-y border-white/10">
+      <section className="relative py-12 border-y border-slate-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
             <div className="text-center">
               <div className="text-4xl font-bold text-gradient mb-1">
                 {response.data.length}+
               </div>
-              <div className="text-slate-400 text-sm">Active Businesses</div>
+              <div className="text-slate-600 text-sm">Active Businesses</div>
             </div>
             <div className="text-center">
               <div className="text-4xl font-bold text-gradient mb-1">
                 {BUSINESS_CATEGORIES.length}
               </div>
-              <div className="text-slate-400 text-sm">Categories</div>
+              <div className="text-slate-600 text-sm">Categories</div>
             </div>
             <div className="text-center">
               <div className="text-4xl font-bold text-gradient mb-1">100%</div>
-              <div className="text-slate-400 text-sm">Local Ottawa</div>
+              <div className="text-slate-600 text-sm">Local Ottawa</div>
             </div>
             <div className="text-center">
               <div className="text-4xl font-bold text-gradient mb-1">Free</div>
-              <div className="text-slate-400 text-sm">to Join</div>
+              <div className="text-slate-600 text-sm">to Join</div>
             </div>
           </div>
         </div>
@@ -107,11 +107,11 @@ export default async function HomePage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-4">
             <div>
-              <h2 className="text-3xl md:text-4xl font-bold text-white mb-3">
+              <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-3">
                 Discover Local
                 <span className="text-gradient"> Businesses</span>
               </h2>
-              <p className="text-slate-400 max-w-xl">
+              <p className="text-slate-600 max-w-xl">
                 Browse our curated directory of Ottawa&apos;s finest businesses,
                 from cozy cafes to innovative tech startups.
               </p>
@@ -122,7 +122,7 @@ export default async function HomePage() {
             <BusinessList businesses={response.data} />
           ) : (
             <div className="glass rounded-2xl p-8 text-center">
-              <p className="text-red-400">
+              <p className="text-red-600">
                 {response.message || 'Failed to load businesses. Please try again later.'}
               </p>
             </div>
@@ -136,10 +136,10 @@ export default async function HomePage() {
         <div className="absolute inset-0 backdrop-blur-3xl" />
 
         <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-3xl md:text-5xl font-bold text-white mb-6">
+          <h2 className="text-3xl md:text-5xl font-bold text-slate-900 mb-6">
             Ready to grow your business?
           </h2>
-          <p className="text-xl text-slate-300 mb-10 max-w-2xl mx-auto">
+          <p className="text-xl text-slate-600 mb-10 max-w-2xl mx-auto">
             Join hundreds of Ottawa businesses already connected on One Hub.
             It&apos;s free, fast, and takes less than 2 minutes.
           </p>
@@ -156,7 +156,7 @@ export default async function HomePage() {
       </section>
 
       {/* Footer */}
-      <footer className="border-t border-white/10 py-12">
+      <footer className="border-t border-slate-200 py-12">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col md:flex-row items-center justify-between gap-4">
             <div className="flex items-center gap-3">
@@ -165,7 +165,7 @@ export default async function HomePage() {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
                 </svg>
               </div>
-              <span className="font-bold text-lg text-white">One Hub Ottawa</span>
+              <span className="font-bold text-lg text-slate-900">One Hub Ottawa</span>
             </div>
             <p className="text-slate-500 text-sm">
               © {new Date().getFullYear()} One Hub Ottawa. All rights reserved.

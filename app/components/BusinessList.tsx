@@ -14,8 +14,8 @@ export function BusinessList({ businesses }: BusinessListProps) {
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
           </svg>
         </div>
-        <h3 className="text-2xl font-bold text-white mb-3">No businesses found</h3>
-        <p className="text-slate-400 max-w-md mx-auto mb-6">
+        <h3 className="text-2xl font-bold text-slate-900 mb-3">No businesses found</h3>
+        <p className="text-slate-600 max-w-md mx-auto mb-6">
           Be the pioneer! Add your Ottawa business and be the first in our directory.
         </p>
         <a href="/add" className="inline-flex items-center gap-2 bg-gradient-to-r from-blue-600 to-cyan-600 text-white px-6 py-3 rounded-full font-semibold transition-all duration-300 hover:scale-105">
