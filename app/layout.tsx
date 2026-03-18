@@ -3,6 +3,7 @@ import { Suspense } from "react";
 import { Montserrat, Playfair_Display } from "next/font/google";
 import "./globals.css";
 import { NavWrapper } from "./components/NavWrapper";
+import { ChatAssistant } from "./components/ChatAssistant";
 
 const montserrat = Montserrat({
   variable: "--font-montserrat",
@@ -44,6 +45,7 @@ export default function RootLayout({
         <main className="pt-20">
           {children}
         </main>
+        <ChatAssistant />
       </body>
     </html>
   );
