@@ -32,6 +32,14 @@ h1, h2, h3, h4, h5, h6 {
   font-weight: 400;
 }
 
+/* Logo wordmark: onehub in Playfair Display italic, black */
+.logo-wordmark {
+  font-family: var(--font-playfair-display-italic), Georgia, serif;
+  font-weight: 400;
+  font-style: italic;
+  color: #000000;
+}
+
 /* Custom scrollbar */
 ::-webkit-scrollbar {
   width: 8px;
