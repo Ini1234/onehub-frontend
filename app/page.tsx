@@ -168,7 +168,7 @@ export default async function HomePage() {
               <span className="logo-wordmark-one">one</span>
               <span className="logo-wordmark-hub">hub</span>
             </Link>
-            <p className="text-slate-500 text-sm">
+            <p className="text-slate-500 text-sm" suppressHydrationWarning>
               © {new Date().getFullYear()} onehub. All rights reserved.
             </p>
           </div>
