@@ -1,26 +1,22 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { usePathname } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
 
-const navLinks: Array<{ href: string; label: string; button?: boolean; path?: string }> = [
-  { href: '/about', label: 'About us' },
-  { href: '/add', label: 'Add Business', button: true },
-  { href: '/#businesses', label: 'Directory', path: '/' },
-  { href: '/events', label: 'Events' },
-  { href: '/contact', label: 'Contact/Connect' },
-  { href: '/careers', label: 'Careers' },
+const navLinks: Array<{ href: string; label: string; path?: string }> = [
+  { href: '/about', label: 'ABOUT US' },
+  { href: '/add', label: 'ADD BUSINESS' },
+  { href: '/#businesses', label: 'DIRECTORY', path: '/' },
+  { href: '/events', label: 'EVENTS' },
+  { href: '/contact', label: 'CONTACT/CONNECT' },
+  { href: '/careers', label: 'CAREERS' },
 ];
 
 const linkClass =
   'text-[#540619] hover:text-[#6d0822] px-3 py-2 text-sm font-medium transition-all duration-200';
 const linkClassActive =
   'text-[#540619] px-3 py-2 text-sm font-semibold border-b-2 border-[#540619] transition-all duration-200';
-const addBusinessLinkClass =
-  'text-[#540619] hover:text-[#6d0822] px-3 py-2 text-sm font-medium transition-all duration-200';
-const addBusinessPillClass =
-  'bg-[#540619] text-white hover:bg-[#6d0822] px-5 py-2.5 rounded-full text-sm font-semibold transition-all duration-300 shadow-lg shadow-[#540619]/25 hover:shadow-[#540619]/40';
 
 function normalizePath(path: string): string {
   const p = (path ?? '').replace(/#.*$/, '').replace(/\/+$/, '') || '/';
@@ -29,18 +25,42 @@ function normalizePath(path: string): string {
 
 export function Nav() {
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [searchQuery, setSearchQuery] = useState('');
+  const [mounted, setMounted] = useState(false);
   const pathname = usePathname();
+  const router = useRouter();
   const currentPath = normalizePath(pathname ?? '');
+
+  // Sync search input from URL only after mount to avoid hydration mismatch
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+  useEffect(() => {
+    if (!mounted) return;
+    const params = new URLSearchParams(window.location.search);
+    setSearchQuery(params.get('q') ?? '');
+  }, [mounted, pathname]);
 
   const isActive = (item: (typeof navLinks)[number]) => {
     const matchPath = normalizePath(item.path ?? item.href);
     return currentPath === matchPath;
   };
 
+  const handleSearch = (e: React.FormEvent) => {
+    e.preventDefault();
+    const q = searchQuery.trim();
+    setMobileOpen(false);
+    if (q) {
+      router.push(`/?q=${encodeURIComponent(q)}#businesses`);
+    } else {
+      router.push('/');
+    }
+  };
+
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 backdrop-blur-xl bg-[#f6f4f0]/90 border-b border-slate-200">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between h-20 items-center">
+        <div className="flex justify-between h-20 items-center gap-4">
           <Link
             href="/"
             className="group flex items-baseline text-2xl tracking-tight text-black hover:opacity-80 transition-opacity py-2 px-1 -mx-1 rounded focus:outline-none focus:ring-2 focus:ring-[#540619]/30"
@@ -51,20 +71,36 @@ export function Nav() {
             <span className="logo-wordmark-hub">hub</span>
           </Link>
 
+          {/* Search bar - desktop */}
+          <form
+            onSubmit={handleSearch}
+            className="hidden sm:flex flex-1 max-w-xs lg:max-w-sm mx-4"
+            role="search"
+          >
+            <input
+              type="search"
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              placeholder="Search businesses..."
+              className="w-full px-4 py-2 rounded-full border border-slate-200 bg-white text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-[#540619]/30 focus:border-[#540619] text-sm"
+              aria-label="Search businesses"
+            />
+            <button
+              type="submit"
+              className="ml-2 p-2 rounded-full bg-[#540619] text-white hover:bg-[#6d0822] transition-colors shrink-0"
+              aria-label="Submit search"
+            >
+              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+              </svg>
+            </button>
+          </form>
+
           {/* Desktop nav */}
           <div key={currentPath} className="hidden lg:flex items-center gap-4 xl:gap-6">
             {navLinks.map((item) => {
               const active = isActive(item);
-              return item.button ? (
-                <Link
-                  key={item.href}
-                  href={item.href}
-                  className={active ? addBusinessPillClass : addBusinessLinkClass}
-                  onClick={() => setMobileOpen(false)}
-                >
-                  {item.label}
-                </Link>
-              ) : (
+              return (
                 <Link
                   key={item.href}
                   href={item.href}
@@ -105,18 +141,30 @@ export function Nav() {
           aria-hidden={!mobileOpen}
         >
           <div key={currentPath} className="py-4 border-t border-slate-200 flex flex-col gap-1">
+            <form onSubmit={handleSearch} className="pb-3 border-b border-slate-200" role="search">
+              <div className="flex gap-2">
+                <input
+                  type="search"
+                  value={searchQuery}
+                  onChange={(e) => setSearchQuery(e.target.value)}
+                  placeholder="Search businesses..."
+                  className="flex-1 px-4 py-2.5 rounded-full border border-slate-200 bg-white text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-[#540619]/30 text-sm"
+                  aria-label="Search businesses"
+                />
+                <button
+                  type="submit"
+                  className="p-2.5 rounded-full bg-[#540619] text-white hover:bg-[#6d0822] transition-colors shrink-0"
+                  aria-label="Submit search"
+                >
+                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                  </svg>
+                </button>
+              </div>
+            </form>
             {navLinks.map((item) => {
               const active = isActive(item);
-              return item.button ? (
-                <Link
-                  key={item.href}
-                  href={item.href}
-                  className={(active ? addBusinessPillClass : addBusinessLinkClass) + ' block text-center py-3'}
-                  onClick={() => setMobileOpen(false)}
-                >
-                  {item.label}
-                </Link>
-              ) : (
+              return (
                 <Link
                   key={item.href}
                   href={item.href}

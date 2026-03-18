@@ -10,11 +10,28 @@ export const metadata: Metadata = {
     'The premier directory for Ottawa businesses. Connect with local entrepreneurs, discover new services, and grow your business network.',
 };
 
-export default async function HomePage() {
+export default async function HomePage({
+  searchParams,
+}: {
+  searchParams: Promise<{ q?: string }>;
+}) {
   const response = await businessService.getBusinesses();
+  const { q: query } = await searchParams;
+  const searchTerm = (query ?? '').trim().toLowerCase();
+
+  const businesses = response.success
+    ? searchTerm
+      ? response.data.filter(
+          (b) =>
+            b.name.toLowerCase().includes(searchTerm) ||
+            b.description.toLowerCase().includes(searchTerm) ||
+            b.category.toLowerCase().includes(searchTerm)
+        )
+      : response.data
+    : [];
 
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen" suppressHydrationWarning>
       {/* Hero Section */}
       <section className="relative overflow-hidden">
         {/* Background decoration - smaller, darker circles */}
@@ -120,7 +137,7 @@ export default async function HomePage() {
           </div>
 
           {response.success ? (
-            <BusinessList businesses={response.data} />
+            <BusinessList businesses={businesses} searchTerm={searchTerm} />
           ) : (
             <div className="glass rounded-2xl p-8 text-center">
               <p className="text-red-600">

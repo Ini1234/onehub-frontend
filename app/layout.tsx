@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
+import { Suspense } from "react";
 import { Montserrat, Playfair_Display } from "next/font/google";
 import "./globals.css";
-import { Nav } from "./components/Nav";
+import { NavWrapper } from "./components/NavWrapper";
 
 const montserrat = Montserrat({
   variable: "--font-montserrat",
@@ -37,7 +38,9 @@ export default function RootLayout({
       <body
         className={`${montserrat.variable} ${playfairDisplay.variable} ${playfairDisplayItalic.variable} antialiased min-h-screen bg-[#f6f4f0] text-black font-sans`}
       >
-        <Nav />
+        <Suspense fallback={null}>
+          <NavWrapper />
+        </Suspense>
         <main className="pt-20">
           {children}
         </main>
