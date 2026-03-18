@@ -1,4 +1,5 @@
 import { Metadata } from 'next';
+import Link from 'next/link';
 import { businessService } from '@/app/services/business.service';
 import { BusinessList } from '@/app/components/BusinessList';
 import { BUSINESS_CATEGORIES } from '@/app/types/business.types';
@@ -159,12 +160,14 @@ export default async function HomePage() {
       <footer className="border-t border-slate-200 py-12">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col md:flex-row items-center justify-between gap-4">
-            <div className="flex items-center gap-3">
-              <span className="flex items-baseline text-xl text-black">
+            <Link
+              href="/"
+              className="flex items-baseline text-xl text-black hover:opacity-80 transition-opacity"
+              aria-label="onehub home"
+            >
               <span className="logo-wordmark-one">one</span>
               <span className="logo-wordmark-hub">hub</span>
-            </span>
-            </div>
+            </Link>
             <p className="text-slate-500 text-sm">
               © {new Date().getFullYear()} onehub. All rights reserved.
             </p>

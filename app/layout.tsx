@@ -40,7 +40,11 @@ export default function RootLayout({
         <nav className="fixed top-0 left-0 right-0 z-50 backdrop-blur-xl bg-[#f6f4f0]/90 border-b border-slate-200">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="flex justify-between h-20 items-center">
-              <Link href="/" className="group flex items-baseline text-2xl tracking-tight text-black" aria-label="onehub home">
+              <Link
+                href="/"
+                className="group flex items-baseline text-2xl tracking-tight text-black hover:opacity-80 transition-opacity py-2 px-1 -mx-1 rounded focus:outline-none focus:ring-2 focus:ring-[#540619]/30"
+                aria-label="onehub home"
+              >
                 <span className="logo-wordmark-one">one</span>
                 <span className="logo-wordmark-hub">hub</span>
               </Link>
